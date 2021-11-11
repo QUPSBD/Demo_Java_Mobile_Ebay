@@ -1,7 +1,7 @@
 package testcases;
 
-import Models.ListElements;
 import Models.ButtonAndTexts;
+import Models.ListElements;
 import base.BaseTest;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
@@ -12,20 +12,18 @@ import utils.TimeOut;
 
 import java.net.MalformedURLException;
 
-import static org.testng.Assert.assertTrue;
-
-public class AccountElements extends BaseTest {
+public class MyMemberShip extends BaseTest {
     AndroidDriver<AndroidElement> driver = setUp();
     ButtonAndTexts buttonAndTexts = new ButtonAndTexts(driver);
     TimeOut timeOut = new TimeOut();
     ListElements assertElements = new ListElements(driver);
 
-    public AccountElements() throws MalformedURLException {
+    public MyMemberShip() throws MalformedURLException {
     }
 
+
     @Test
-    public void elementTest() {
-        //login
+    public void myMemberShipTest() {
         buttonAndTexts.btnClick(Locators.profileBtn);
         timeOut.timeOut();
         buttonAndTexts.btnClick(Locators.signUp_email_btn);
@@ -36,32 +34,12 @@ public class AccountElements extends BaseTest {
         buttonAndTexts.btnClick(Locators.loginBtn);
         timeOut.timeOutFixed(2000);
 
-        //click on elements
-        buttonAndTexts.btnClick(Locators.myAds);
-        timeOut.timeOutFixed(2000);
-        assertElements.assertion(Locators.headingElements, 0, "My Ads");
-        timeOut.timeOut();
-        buttonAndTexts.btnClick(Locators.backButton);
         timeOut.timeOut();
         buttonAndTexts.btnClick(Locators.myMembership);
         timeOut.timeOut();
         assertElements.assertion(Locators.headingElements, 0, "My membership");
         timeOut.timeOut();
         buttonAndTexts.btnClick(Locators.backButton);
-        timeOut.timeOut();
-        buttonAndTexts.btnClick(Locators.favorites);
-        timeOut.timeOut();
-        assertElements.assertion(Locators.headingElements, 0, "Favorites");
-        timeOut.timeOut();
-        buttonAndTexts.btnClick(Locators.backButton);
-        timeOut.timeOut();
-        buttonAndTexts.btnClick(Locators.myProfile);
-        timeOut.timeOut();
-        assertElements.assertion(Locators.headingElements, 0, "My Profile");
-        timeOut.timeOut();
-        buttonAndTexts.btnClick(Locators.backButton);
-        timeOut.timeOut();
-
     }
 
     @Test
